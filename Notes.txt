@@ -1,0 +1,37 @@
+Key Concepts Demonstrated with Todo List:
+
+1. DOM Manipulation
+- Creating elements (createElement)
+- Modifying elements (classList, textContent)
+- Appending elements (appendChild, append)
+
+
+2. Event Handling
+- Form submission
+- Click events
+- Change events
+
+
+3. State Management
+- Keeping track of todos array
+- Updating UI based on state changes
+
+
+4. Local Storage
+- Saving data (setItem)
+- Loading data (getItem)
+- JSON parsing/stringifying
+
+
+5. Array Methods
+- push
+- find
+- filter
+
+
+6. Data Attributes
+- Using dataset to store IDs
+- Selecting elements by data attributes
+
+
+** It looks like refreshing the todo list causes a bug. Try to solve it.

@@ -1,10 +1,12 @@
 // Select DOM elements.
+const container = document.getElementById('todoForm').parentElement;
 const todoForm = document.getElementById('todoForm');
 const todoInput = document.getElementById('todoInput');
 const todoList = document.getElementById('todoList');
 
 // Initialise the todos array.
 let todos = [];
+let isClearButtonRendered = false;
 
 // Add event listeners.
 todoForm.addEventListener('submit', handleSubmit);
@@ -31,6 +33,7 @@ function addTodo(todoText) {
     // Add to the todos array.
     todos.push(todo);
     renderTodo(todo);
+    renderClearButton(); // Needed here also
     saveTodos();
 }
 
@@ -98,8 +101,37 @@ function deleteTodo(id) {
     // Remove from DOM
     const li = todoList.querySelector(`[data-id="${id}"]`);
     li.remove();
-
     saveTodos();
+    renderClearButton(); // Needed here to check for clear button's visibility
+}
+
+// This will be used to show/hide the clear button.
+function renderClearButton() {
+
+    // Remove existing clear button if it exists.
+    const existingButton = document.querySelector('.clear-button');
+    if (existingButton) {
+        existingButton.remove();
+        isClearButtonRendered = false;
+    }
+
+    // Add clear button if we have more than one todo.
+    if (todos.length > 1) {
+        const clearButton = document.createElement('button');
+        clearButton.textContent = "Clear"
+        clearButton.className = "clear-button";
+        clearButton.addEventListener('click', () => clearTodos());
+        container.appendChild(clearButton);
+
+        isClearButtonRendered = true;
+    }
+}
+
+function clearTodos() {
+    todos = []; // Clear the array
+    todoList.innerHTML = ''; // Clear the DOM
+    saveTodos(); // Saves the empty state
+    renderClearButton(); // Removes the clear button
 }
 
 // Saving todos to localStorage.

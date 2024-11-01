@@ -1,6 +1,6 @@
 interface ButtonProps {
     onClick: () => void;
-    children: React.ReactNode;
+    children: React.ReactNode; // Important
     variant?: 'increment' | 'decrement' | 'reset';
 }
 
@@ -14,6 +14,8 @@ function Button({ onClick, children, variant = 'increment' }: ButtonProps) {
     };
 
     // Ensures variant is valid
+    // If variant is in variantStyles, leave it
+    // If it isn't assign it 'increment'
     const safeVariant = variant in variantStyles ? variant : 'increment';
 
     return (

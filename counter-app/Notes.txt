@@ -1,0 +1,15 @@
+
+npm create vite@latest counter-app -- --template react-ts
+
+cd counter-app
+
+npm install
+
+npm run dev
+
+
+npm install -D tailwindcss postcss autoprefixer
+
+npx tailwindcss init -p
+
+

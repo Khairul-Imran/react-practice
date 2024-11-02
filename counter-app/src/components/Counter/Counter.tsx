@@ -18,6 +18,21 @@ function Counter() {
         localStorage.setItem('count', JSON.stringify(count));
     }, [count]); // Dependency array - useEffect runs when these values change
 
+    // Event listeners for arrow keys
+    useEffect(() => {
+        const handleKeyPress = (e: KeyboardEvent) => {
+            if (e.key === 'ArrowUp') increment();
+            if (e.key === 'ArrowDown') decrement();
+        };
+
+        window.addEventListener('keydown', handleKeyPress);
+
+        // Cleanup function - runs before effect runs again or component unmounts
+        return () => {
+            window.removeEventListener('keydown', handleKeyPress);
+        };
+    }, []);
+
     return (
         <div className="flex flex-col items-center gap-4">
             <CounterDisplay count={count} />

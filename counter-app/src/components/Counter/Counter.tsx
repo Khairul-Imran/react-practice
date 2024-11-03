@@ -3,7 +3,7 @@ import Button from '../Button/Button'
 import CounterDisplay from "./CounterDisplay";
 
 function Counter() {
-
+    
     // Create a ref for the div
     const divRef = useRef<HTMLDivElement>(null);
 

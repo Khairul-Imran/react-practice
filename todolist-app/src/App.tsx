@@ -11,11 +11,24 @@ function App() {
 
     // Callback function defined in parent
     const addTodo = (text: string) => {
-      setTodos([...todos, {
-        id: Date.now(),
-        text,
-        completed: false
-      }]);
+        setTodos([
+            ...todos,
+            {
+                id: Date.now(),
+                text,
+                completed: false,
+            },
+        ]);
+    };
+
+    // To revise these concepts to better understand.
+    // Functions/common methods
+    const toggleTodo = (id: number) => {
+      setTodos(todos.map(todo => todo.id === id ? { ...todo, completed: !todo.completed } : todo));
+    };
+
+    const deleteTodo = (id: number) => {
+      setTodos(todos.filter(todo => todo.id !== id));
     };
 
     return (
@@ -27,7 +40,10 @@ function App() {
                 <div className="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md"></div>
                 <TodoHeader></TodoHeader>
                 <TodoForm onAddTodo={addTodo}></TodoForm>
-                <TodoList todos={todos}></TodoList>
+                <TodoList 
+                  todos={todos}
+                  onToggleTodo={toggleTodo}
+                  onDeleteTodo={deleteTodo}></TodoList>
             </div>
         </div>
     );

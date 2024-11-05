@@ -15,12 +15,13 @@ function App() {
     });
 
     // Callback function defined in parent
-    const addTodo = (text: string) => {
+    const addTodo = (text: string, description: string) => {
         setTodos([
             ...todos,
             {
                 id: Date.now(),
                 text,
+                description,
                 completed: false,
             },
         ]);

@@ -12,6 +12,12 @@ function TodoList({ todos, onToggleTodo, onDeleteTodo }: TodoListProps) {
     const [sortBy, setSortBy] = useState<"newest" | "oldest">("oldest");
 
     const sortedTodos = [...todos].sort((a, b) => {
+        // First sorting by completion status
+        if (a.completed !== b.completed) { // If completion status is different
+            return a.completed ? 1 : -1; // Put completed items at the bottom
+        }
+
+        // If completion status is the same, sort by date
         return sortBy === "oldest" ? a.id - b.id : b.id - a.id;
     });
 

@@ -47,7 +47,7 @@ function App() {
 
     return (
         <div className="min-h-screen bg-gray-100 py-8">
-            <TodoHeader></TodoHeader>
+            <TodoHeader todos={todos}></TodoHeader>
             <TodoForm onAddTodo={addTodo}></TodoForm>
             <TodoList
                 todos={todos}

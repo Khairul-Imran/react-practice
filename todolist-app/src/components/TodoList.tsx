@@ -1,13 +1,19 @@
+import { useState } from "react";
 import { Todo } from "../types/todo";
 import TodoItem from "./TodoItem";
 
 interface TodoListProps {
-    todos: Todo[],
+    todos: Todo[];
     onToggleTodo: (id: number) => void;
     onDeleteTodo: (id: number) => void;
 }
 
 function TodoList({ todos, onToggleTodo, onDeleteTodo }: TodoListProps) {
+    const [sortBy, setSortBy] = useState<"newest" | "oldest">("oldest");
+
+    const sortedTodos = [...todos].sort((a, b) => {
+        return sortBy === "oldest" ? a.id - b.id : b.id - a.id;
+    });
 
     if (todos.length === 0) {
         return (
@@ -18,16 +24,29 @@ function TodoList({ todos, onToggleTodo, onDeleteTodo }: TodoListProps) {
     }
 
     return (
-        <ul className="divide-y divide-gray-200">
-            {todos.map((todo) => (
-                <TodoItem
-                    key={todo.id}
-                    todo={todo}
-                    onToggle={onToggleTodo}
-                    onDelete={onDeleteTodo}
-                />  
-            ))}
-        </ul>
+        <div>
+            <select
+                value={sortBy}
+                onChange={(e) =>
+                    setSortBy(e.target.value as "newest" | "oldest")
+                }
+                className="mb-4 p-2 border rounded"
+            >
+                <option value="oldest">Oldest First</option>
+                <option value="newest">Newest First</option>
+            </select>
+
+            <ul className="divide-y divide-gray-200">
+                {sortedTodos.map((todo) => (
+                    <TodoItem
+                        key={todo.id}
+                        todo={todo}
+                        onToggle={onToggleTodo}
+                        onDelete={onDeleteTodo}
+                    />
+                ))}
+            </ul>
+        </div>
     );
 }
 

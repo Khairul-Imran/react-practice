@@ -29,21 +29,21 @@ function TodoForm({ onAddTodo }: TodoFormProps) {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="space-x-2">
+        <form onSubmit={handleSubmit} className="flex flex-col items-center gap-4">
             <input
                 type="text"
                 value={text}
                 onChange={(e) => setText(e.target.value)}
                 placeholder="Add a new todo.."
-                className="px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-1/3 px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
 
-            <input
-                type="text"
+            <textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder="Add some description..."
-                className="px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-1/3 px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                rows={4}
             />
 
             <button

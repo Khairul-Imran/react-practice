@@ -5,10 +5,11 @@ import TodoItem from "./TodoItem";
 interface TodoListProps {
     todos: Todo[];
     onToggleTodo: (id: number) => void;
+    onEditTodo: (id: number, text: string, description: string) => void;
     onDeleteTodo: (id: number) => void;
 }
 
-function TodoList({ todos, onToggleTodo, onDeleteTodo }: TodoListProps) {
+function TodoList({ todos, onToggleTodo, onEditTodo, onDeleteTodo }: TodoListProps) {
     const [sortBy, setSortBy] = useState<"newest" | "oldest">("oldest");
 
     const sortedTodos = [...todos].sort((a, b) => {
@@ -48,6 +49,7 @@ function TodoList({ todos, onToggleTodo, onDeleteTodo }: TodoListProps) {
                         key={todo.id}
                         todo={todo}
                         onToggle={onToggleTodo}
+                        onEdit={onEditTodo}
                         onDelete={onDeleteTodo}
                     />
                 ))}

@@ -35,14 +35,14 @@ function TodoForm({ onAddTodo }: TodoFormProps) {
                 value={text}
                 onChange={(e) => setText(e.target.value)}
                 placeholder="Add a new todo.."
-                className="w-1/3 px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-1/2 px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
 
             <textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder="Add some description..."
-                className="w-1/3 px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-1/2 px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                 rows={4}
             />
 

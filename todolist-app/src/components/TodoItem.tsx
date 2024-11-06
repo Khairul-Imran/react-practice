@@ -23,8 +23,8 @@ function TodoItem({ todo, onToggle, onEdit, onDelete }: TodoItemProps) {
     };
 
     return (
-        <li className="flex flex-col p-3 border-b items-center">
-            <div className="w-1/2 flex items-center gap-2">
+        <li className="flex flex-col p-6">
+            <div className="flex items-center gap-4">
                 <input
                     type="checkbox"
                     checked={todo.completed}
@@ -106,7 +106,7 @@ function TodoItem({ todo, onToggle, onEdit, onDelete }: TodoItemProps) {
                     {!isEditing && (
                         <button
                             onClick={() => setIsEditing(true)}
-                            className="px-2 py-1 text-sm text-blue-600 hover:text-blue-800 
+                            className="px-3 py-1.5 text-sm text-blue-600 hover:text-blue-800 
                                     hover:bg-blue-100 rounded focus:outline-none focus:ring-2 
                                     focus:ring-blue-500"
                         >
@@ -115,7 +115,7 @@ function TodoItem({ todo, onToggle, onEdit, onDelete }: TodoItemProps) {
                     )}
                     <button
                         onClick={() => onDelete(todo.id)}
-                        className="px-2 py-1 text-sm text-red-600 hover:text-red-800 
+                        className="px-3 py-1.5 text-sm text-red-600 hover:text-red-800 
                                 hover:bg-red-100 rounded focus:outline-none focus:ring-2 
                                 focus:ring-red-500"
                     >

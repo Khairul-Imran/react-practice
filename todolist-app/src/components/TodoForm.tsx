@@ -1,7 +1,7 @@
 import { FormEvent, useState } from "react";
 
 interface TodoFormProps {
-    onAddTodo: (text: string, description: string) => void;
+    onAddTodo: (text: string, description: string) => void; // Add todo doesn't return anything
 }
 
 function TodoForm({ onAddTodo }: TodoFormProps) {

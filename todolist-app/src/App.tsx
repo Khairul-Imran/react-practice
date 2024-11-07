@@ -27,8 +27,6 @@ function App() {
         ]);
     };
 
-    // TODO: To revise these concepts to better understand.
-    // Functions/common methods
     const toggleTodo = (id: number) => {
         setTodos(
             todos.map((todo) =>
@@ -44,7 +42,7 @@ function App() {
             : todo
       ));
 
-      // ...todo: Spread operator to copy all existing properties of the todo
+      // ...todo: Spread operator to copy all existing properties of that todo
       // , text, description: Override the text and description with new values
       // Keeps other properties (like id and completed) unchanged
 
@@ -52,7 +50,7 @@ function App() {
     };
 
     const deleteTodo = (id: number) => {
-        setTodos(todos.filter((todo) => todo.id !== id));
+      setTodos(todos.filter((todo) => todo.id !== id));
     };
 
     // To save todos in localStorage whenever todolist changes

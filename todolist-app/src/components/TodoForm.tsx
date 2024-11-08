@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 
 interface TodoFormProps {
     onAddTodo: (text: string, description: string) => void; // Add todo doesn't return anything
@@ -103,7 +103,8 @@ function TodoForm({ onAddTodo }: TodoFormProps) {
                     onChange={handleInputChange}
                     placeholder="Add a new todo.."
                     // className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    className={`w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 
+                    className={`w-full px-4 py-2 border rounded focus:outline-none focus:ring-2
+                    bg-white dark:bg-gray-700 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600
                         ${
                             errors.text
                                 ? "border-red-500 focus:ring-red-500"

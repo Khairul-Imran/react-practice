@@ -23,7 +23,7 @@ function TodoItem({ todo, onToggle, onEdit, onDelete }: TodoItemProps) {
     };
 
     return (
-        <li className="flex flex-col p-6">
+        <li className="flex flex-col p-6 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
             <div className="flex items-center gap-4">
                 <input
                     type="checkbox"
@@ -35,7 +35,6 @@ function TodoItem({ todo, onToggle, onEdit, onDelete }: TodoItemProps) {
                 {/* Uses isEditing state to toggle between view and edit mode */}
                 <div className="flex-1 flex flex-col gap-2">
                     {isEditing ? (
-
                         // Edit mode
                         <div className="flex flex-col gap-2">
                             <input
@@ -72,7 +71,6 @@ function TodoItem({ todo, onToggle, onEdit, onDelete }: TodoItemProps) {
                             </div>
                         </div>
                     ) : (
-
                         // View mode
                         <>
                             <span

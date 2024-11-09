@@ -44,9 +44,7 @@ function TodoForm({ onAddTodo }: TodoFormProps) {
 
     // Handling form input changes with validation
     // Note that since we call the setText() and setDescription() here, we can change the onChange value in our return statement
-    function handleInputChange(
-        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-    ) {
+    function handleInputChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
         const { name, value } = e.target;
 
         // Update the values
@@ -57,16 +55,38 @@ function TodoForm({ onAddTodo }: TodoFormProps) {
         }
 
         // Validate and update errors
-        // Clarify what this means....
         setErrors((prev) => ({
             ...prev,
             [name]: validateField(name, value),
         }));
+
+        // 1. 
+        // prev contains the current state of errors, which looks like:
+        // { text: "", description: "" }
+
+        // 2.
+        // ...prev, spreads out all existing error properties
+        // If prev was { text: "Some error", description: "" }
+        // This line copies both those properties
+
+        // 3.
+        // [name] is using computed property names. The square brackets mean "use the value of name as the property name":
+        // If name is "text":
+        // { [name]: value } -> becomes { text: value }
+        // If name is "description":
+        // { [name]: value } -> becomes { description: value }
+
+        // More verbose way of doing the above setErrors
+        // setErrors((prev) => {
+        //     return {
+        //         text: name === 'text' ? validateField(name, value) : prev.text,
+        //         description: name === 'description' ? validateField(name, value) : prev.description
+        //     };
+        // });
     }
 
     // Form submission handling, with validation added
     function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-        // Is it necessary for us to put the "React." before FormEvent? We didn't have that earlier.
         e.preventDefault();
 
         // Validate all fields before submission
@@ -97,7 +117,7 @@ function TodoForm({ onAddTodo }: TodoFormProps) {
                 {/* Container for input and add description button */}
                 <input
                     type="text"
-                    name="text" // New for validation
+                    name="text" // Form validation
                     value={text}
                     // onChange={(e) => setText(e.target.value)}
                     onChange={handleInputChange}
@@ -133,7 +153,7 @@ function TodoForm({ onAddTodo }: TodoFormProps) {
             {isAddingDescription && (
                 <div className="w-1/2">
                     <textarea
-                        name="description" // New for validation
+                        name="description" // Form validation
                         value={description}
                         // onChange={(e) => setDescription(e.target.value)}
                         onChange={handleInputChange}

@@ -1,13 +1,23 @@
 // import { useEffect, useState } from "react";
 import { apiClient } from "./baseApi";
 
+export interface ApiResponse {
+    quote: string;
+}
+
 export interface Quote {
     quote: string;
     author: string;
 }
 
-function getQuote() {
-    return apiClient<Quote>('/random')
+async function getQuote(): Promise<Quote> {
+    // return apiClient<Quote>('/random')
+    const response = await apiClient<ApiResponse>();
+
+    return {
+        quote: response.quote,
+        author: "Kanye"
+    };
 }
 
 export const quoteApi = {

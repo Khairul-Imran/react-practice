@@ -1,7 +1,10 @@
-const BASE_URL = 'https://zenquotes.io/api';
+// const BASE_URL = 'https://zenquotes.io/api';
+// const BASE_URL = 'https://stoic.tekloon.net/stoic-quote';
+const BASE_URL = 'https://api.kanye.rest';
 
-export async function apiClient<T>(endpoint: string): Promise<T> {
-    const response = await fetch(`${BASE_URL}${endpoint}`, {
+export async function apiClient<T>(): Promise<T> {
+    // const response = await fetch(`${BASE_URL}${endpoint}`, {
+    const response = await fetch(BASE_URL, {
         // mode: 'no-cors'
     });
     

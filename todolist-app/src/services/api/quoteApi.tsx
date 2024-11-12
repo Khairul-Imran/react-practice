@@ -1,4 +1,3 @@
-// import { useEffect, useState } from "react";
 import { apiClient } from "./baseApi";
 
 export interface ApiResponse {

@@ -13,3 +13,40 @@ npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
 
 
+Notes for improvements to the quotes fetching:
+
+Key Improvements Explained:
+
+More Flexible API Client:
+- Added support for endpoints and fetch options
+- Proper header handling
+- Type safety with generics
+
+
+Request Cancellation:
+- Uses AbortController for request cancellation
+- Prevents memory leaks
+- Handles component unmounting properly
+- Ignores errors from cancelled requests
+
+
+Retry Logic & Refresh:
+- Added refetch functionality
+- "Try again" button when errors occur
+- Hover refresh button for successful quotes
+- Clean error handling
+
+
+Custom Hook:
+- Encapsulates all quote-related logic
+- Provides clean interface for components
+- Handles all state management
+- Reusable across components if needed
+
+
+
+Additional UI Improvements:
+- Added hover state for quote refresh
+- Improved error presentation
+- Better loading state
+- Smooth transitions

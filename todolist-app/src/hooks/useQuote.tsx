@@ -8,6 +8,12 @@ interface UseQuoteResult {
     refetch: () => Promise<void>; // Why this?
 }
 
+// Custom Hook:
+// - Encapsulates all quote-related logic
+// - Provides clean interface for components
+// - Handles all state management
+// - Reusable across components if needed
+
 export function useQuote(): UseQuoteResult {
     const [quote, setQuote] = useState<Quote>();
     const [isLoading, setIsLoading] = useState(false); // Track loading state
@@ -43,6 +49,12 @@ export function useQuote(): UseQuoteResult {
 
 
     }, [fetchQuote]);
+
+    // Request Cancellation:
+    // - Uses AbortController for request cancellation
+    // - Prevents memory leaks
+    // - Handles component unmounting properly
+    // - Ignores errors from cancelled requests
 
     return {
         quote,

@@ -9,9 +9,11 @@ export interface Quote {
     author: string;
 }
 
-async function getQuote(): Promise<Quote> {
-    // return apiClient<Quote>('/random')
-    const response = await apiClient<ApiResponse>();
+// Accepts AbortSignal as an optional parameter
+async function getQuote(signal?: AbortSignal): Promise<Quote> {
+    const response = await apiClient<ApiResponse>('', {
+        signal // Pass the signal to fetch for cancellation
+    });
 
     return {
         quote: response.quote,

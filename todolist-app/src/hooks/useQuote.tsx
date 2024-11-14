@@ -31,7 +31,10 @@ export function useQuote(): UseQuoteResult {
             setQuote(quote);
         } catch (err) { // Handle any errors that might occur
             // Don't set error if the request was cancelled
-            if (err instanceof Error && err.name === 'AbortError') return;
+            if (err instanceof Error && err.name === 'AbortError') {
+                console.log("Request was cancelled!");
+                return;
+            }
             setError(err instanceof Error ? err.message : "An error occurred.");
         } finally {
             setIsLoading(false);
@@ -40,13 +43,16 @@ export function useQuote(): UseQuoteResult {
 
     // Initial fetch with cleanup
     useEffect(() => {
-        const abortController = new AbortController();
+        const abortController = new AbortController(); // Create a new AbortController
 
+        // Pass its signal to fetchQuote()
         fetchQuote(abortController.signal);
 
         // Cleanup function to cancel request when component unmounts
-        return () => abortController.abort();
-
+        return () => {
+            console.log("Cancelling ongoing request...");
+            abortController.abort();
+        };
 
     }, [fetchQuote]);
 

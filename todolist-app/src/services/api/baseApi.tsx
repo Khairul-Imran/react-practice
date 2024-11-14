@@ -6,10 +6,10 @@ export async function apiClient<T>(
     ): Promise<T> {
     const response = await fetch(`${BASE_URL}${endpoint}`, {
         // These are the parameters/properties that you are passing to the RequestInit
-        ...options,
+        ...options, // Spread the existing options that we give
         headers: {
-            'Content-Type' : 'application/json',
-            ...options.headers,
+            'Content-Type' : 'application/json', // Default header we provide
+            ...options.headers, // Spread additional headers if provided in the request
         },
     });
     

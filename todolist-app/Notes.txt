@@ -44,9 +44,15 @@ Custom Hook:
 - Reusable across components if needed
 
 
-
 Additional UI Improvements:
 - Added hover state for quote refresh
 - Improved error presentation
 - Better loading state
 - Smooth transitions
+
+Info about AbortSignal:
+AbortSignal is used to cancel ongoing fetch requests. This is particularly useful when:
+- The user navigates away from a page
+- A component unmounts while a request is still pending
+- You want to cancel an old request when making a new one
+
